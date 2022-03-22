@@ -17,12 +17,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
 
+      ),
+      home: ChangeNotifierProvider<MenuInfo>(
+        create: (context) => MenuInfo(MenuType.clock, title: '', imageSource: ''),
+        child: SafeArea(child: HomePage()),
+      ),
     );
   }
 }
