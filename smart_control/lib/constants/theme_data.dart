@@ -42,6 +42,15 @@ class CustomColors extends ChangeNotifier {
   }
 
 }
+class GradientTemplate {
+  static List<GradientColors> gradientTemplate = [
+    GradientColors(GradientColors.sky),
+    GradientColors(GradientColors.sunset),
+    GradientColors(GradientColors.sea),
+    GradientColors(GradientColors.mango),
+    GradientColors(GradientColors.fire),
+  ];
+}
 
 class GradientColors {
   final List<Color> colors;
@@ -54,12 +63,3 @@ class GradientColors {
   static List<Color> fire = [Color(0xFFFF5DCD), Color(0xFFFF8484)];
 }
 
-class GradientTemplate {
-  static List<GradientColors> gradientTemplate = [
-    GradientColors(GradientColors.sky),
-    GradientColors(GradientColors.sunset),
-    GradientColors(GradientColors.sea),
-    GradientColors(GradientColors.mango),
-    GradientColors(GradientColors.fire),
-  ];
-}
