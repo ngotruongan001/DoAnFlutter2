@@ -6,12 +6,15 @@ import 'package:smart_control/constants/theme_data.dart';
 import 'package:smart_control/models/data.dart';
 import 'package:smart_control/models/enum.dart';
 import 'package:smart_control/models/menu_info.dart';
-import 'package:smart_control/screens/chat_bot/ChatBot.dart';
+import 'package:smart_control/screens/chat_bot/chatbot.dart';
 import 'package:smart_control/screens/clock_page.dart';
 import 'package:smart_control/screens/feedback/index.dart';
 import 'package:smart_control/screens/light.dart';
+import 'package:smart_control/screens/maps/MapsScreen.dart';
 import 'package:smart_control/screens/tem_hum/index.dart';
 import 'package:smart_control/screens/temp_home/dash_board.dart';
+
+
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -82,6 +85,29 @@ class _HomePageState extends State<HomePage> {//lỗi firebase
                         height: 10,
                       ),
                     ]),
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: CustomColors.pageBackgroundColor,
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => MapsScreen()),
+                      );
+                    },
+                    child: Text(
+                      "maps",
+                      style: TextStyle(
+                        color: model.mainBgHome
+                            ? CustomColors.primaryTextColor
+                            : Colors.black,
+                        fontFamily: 'avenir',
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
