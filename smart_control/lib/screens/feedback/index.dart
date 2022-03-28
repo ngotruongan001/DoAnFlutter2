@@ -46,7 +46,63 @@ class _ReportPageState extends State<ReportPage> {
       backgroundColor: CustomColors.pageBackgroundColor,
       body: Padding(
         padding: const EdgeInsets.all(10.0),
-       
+        child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: Container(
+                  width: 200,
+                  height: 200,
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/images/feedback-2.png'),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              ),
+              TextFormField(
+                controller: myController,
+                style: TextStyle(
+                  color: CustomColors.primaryTextColor
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter some text';
+                  }
+                  return null;
+                },
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16.0),
+                child: ElevatedButton(
+                  onPressed: () async {
+                    if (_formKey.currentState!.validate()) {
+                      //post
+                      //....
+                      final UserModel? user = await createUser(myController.text);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Processing Data')),
+                      );
+                    }
+                    myController.text = "";
+                  },
+                  child: Center(
+                      child: Container(
+                          height: 50,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children:[Text('Submit',style: TextStyle(
+                              color: CustomColors.primaryTextColor
+                            ),)],))),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
