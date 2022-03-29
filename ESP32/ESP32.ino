@@ -9,8 +9,8 @@
 #define FIREBASE_AUTH "fp1vJ2wsFBJwjIDW9Q3gRNftTZ4QI6gmtER6VawQ"
 
 
-#define WIFI_SSID "Test" // Tên wifi của bạn
-#define WIFI_PASSWORD "123456789" // Password wifi của bạn
+#define WIFI_SSID "ADMIN 7060" // Tên wifi của bạn
+#define WIFI_PASSWORD "9953j0W@" // Password wifi của bạn
 
 #include "WebServer.h" 
 

@@ -1,6 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.smart_control">
-   <application
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <application
         android:usesCleartextTraffic="true"
         android:label="IoT Smart"
         android:icon="@mipmap/ic_launcher">
@@ -39,6 +41,8 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+       <meta-data android:name="com.google.android.geo.API_KEY"
+           android:value="AIzaSyAmlnTS2YBu40b6263miPx4TCc0rItwyEY"/>
     </application>
 
 </manifest>
