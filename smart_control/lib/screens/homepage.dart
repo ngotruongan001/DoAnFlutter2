@@ -6,15 +6,13 @@ import 'package:smart_control/constants/theme_data.dart';
 import 'package:smart_control/models/data.dart';
 import 'package:smart_control/models/enum.dart';
 import 'package:smart_control/models/menu_info.dart';
-import 'package:smart_control/screens/chat_bot/chatbot.dart';
+import 'package:smart_control/screens/chat_bot/ChatBot.dart';
 import 'package:smart_control/screens/clock_page.dart';
 import 'package:smart_control/screens/feedback/index.dart';
 import 'package:smart_control/screens/light.dart';
-import 'package:smart_control/screens/maps/MapsScreen.dart';
+import 'package:smart_control/screens/map/maps_screen.dart';
 import 'package:smart_control/screens/tem_hum/index.dart';
 import 'package:smart_control/screens/temp_home/dash_board.dart';
-
-
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -32,129 +30,153 @@ class _HomePageState extends State<HomePage> {//lỗi firebase
           backgroundColor: CustomColors.pageBackgroundColor,
           body: Row(
             children: <Widget>[
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Column(
-                    children: menuItems
-                        .map((currentMenuInfo) => buildMenuButton(
-                        currentMenuInfo, model.mainBgHome))
-                        .toList(),
-                  ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: CustomColors.pageBackgroundColor,
+              SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(
+                      children: menuItems
+                          .map((currentMenuInfo) => buildMenuButton(
+                          currentMenuInfo, model.mainBgHome))
+                          .toList(),
                     ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ChatBot(model)),
-                      );
-                    },
-                    child: Column(children: [
-                      const SizedBox(
-                        height: 8,
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: CustomColors.pageBackgroundColor,
                       ),
-                      Container(
-                        height: 64,
-                        width: 64,
-                        decoration: const BoxDecoration(
-
-                          image: DecorationImage(
-                            image: AssetImage('assets/images/chatbot.png'),
-                            fit: BoxFit.cover,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MapsScreen()),
+                        );
+                      },
+                      child: Column(children: [
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        Container(
+                          height: 64,
+                          width: 55,
+                          decoration: const BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage('assets/images/map.png'),
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        'ChatBot',
-                        style: TextStyle(
-                          color: model.mainBgHome
-                              ? CustomColors.primaryTextColor
-                              : Colors.black,
-                          fontFamily: 'avenir',
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
+                        const SizedBox(
+                          height: 10,
                         ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                    ]),
-                  ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: CustomColors.pageBackgroundColor,
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => MapsScreen()),
-                      );
-                    },
-                    child: Text(
-                      "maps",
-                      style: TextStyle(
-                        color: model.mainBgHome
-                            ? CustomColors.primaryTextColor
-                            : Colors.black,
-                        fontFamily: 'avenir',
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      primary: CustomColors.pageBackgroundColor,
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ReportPage()),
-                      );
-                    },
-                    child: Column(children: [
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      Container(
-                        height: 64,
-                        width: 64,
-                        decoration: const BoxDecoration(
-
-                          image: DecorationImage(
-                            image: AssetImage('assets/images/feedback.png'),
-                            fit: BoxFit.cover,
+                        Text(
+                          'Map',
+                          style: TextStyle(
+                            color: model.mainBgHome
+                                ? CustomColors.primaryTextColor
+                                : Colors.black,
+                            fontFamily: 'avenir',
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        'Feedback',
-                        style: TextStyle(
-                          color: model.mainBgHome
-                              ? CustomColors.primaryTextColor
-                              : Colors.black,
-                          fontFamily: 'avenir',
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
+                        const SizedBox(
+                          height: 10,
                         ),
+                      ]),
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: CustomColors.pageBackgroundColor,
                       ),
-                      const SizedBox(
-                        height: 10,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ChatBot(model)),
+                        );
+                      },
+                      child: Column(children: [
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        Container(
+                          height: 64,
+                          width: 64,
+                          decoration: const BoxDecoration(
+
+                            image: DecorationImage(
+                              image: AssetImage('assets/images/chatbot.png'),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          'ChatBot',
+                          style: TextStyle(
+                            color: model.mainBgHome
+                                ? CustomColors.primaryTextColor
+                                : Colors.black,
+                            fontFamily: 'avenir',
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                      ]),
+                    ),
+
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: CustomColors.pageBackgroundColor,
                       ),
-                    ]),
-                  ),
-                ],
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ReportPage()),
+                        );
+                      },
+                      child: Column(children: [
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        Container(
+                          height: 64,
+                          width: 64,
+                          decoration: const BoxDecoration(
+
+                            image: DecorationImage(
+                              image: AssetImage('assets/images/feedback.png'),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          'Feedback',
+                          style: TextStyle(
+                            color: model.mainBgHome
+                                ? CustomColors.primaryTextColor
+                                : Colors.black,
+                            fontFamily: 'avenir',
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                      ]),
+                    ),
+                  ],
+                ),
               ),
               VerticalDivider(
                 color: CustomColors.dividerColor,

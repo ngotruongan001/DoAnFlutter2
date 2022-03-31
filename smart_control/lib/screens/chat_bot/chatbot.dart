@@ -83,7 +83,7 @@ class _ChatBotState extends State<ChatBot> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Report"),
+        title: Text("Chat Bot"),
         backgroundColor: CustomColors.menuBackgroundColor,
       ),
       backgroundColor: CustomColors.pageBackgroundColor,

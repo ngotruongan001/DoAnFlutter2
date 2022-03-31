@@ -40,7 +40,7 @@ class _ReportPageState extends State<ReportPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Report"),
+        title: Text("Feedback"),
         backgroundColor: CustomColors.menuBackgroundColor,
       ),
       backgroundColor: CustomColors.pageBackgroundColor,
