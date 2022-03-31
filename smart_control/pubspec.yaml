@@ -40,6 +40,7 @@ dependencies:
   firebase_core:
   http:
   google_maps_flutter:
+  flutter_polyline_points:
   geolocator:
 
 
