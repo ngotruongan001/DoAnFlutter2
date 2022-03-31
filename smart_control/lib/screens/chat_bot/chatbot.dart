@@ -46,6 +46,7 @@ class _ChatBotState extends State<ChatBot> {
 
     AuthGoogle authGoogle =
     await AuthGoogle(fileJson: 'assets/service.json').build();
+
     Dialogflow dialogflow = Dialogflow(authGoogle: authGoogle, language: Language.english);
     AIResponse response = await dialogflow.detectIntent(query);
     print(response.getMessage());
@@ -55,6 +56,7 @@ class _ChatBotState extends State<ChatBot> {
       name: 'Bot',
       type: false,
     );
+
     setState(() {
       _messages.insert(0, message);
     });
