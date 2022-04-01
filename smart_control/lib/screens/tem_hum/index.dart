@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import "package:flutter/material.dart";
 import 'package:smart_control/constants/theme_data.dart';
 import 'package:smart_control/models/temp_hum/temphumi.dart';
@@ -18,30 +17,21 @@ class TemparaturePage extends StatefulWidget {
 class _TemparaturePageState extends State<TemparaturePage> {
   var temperature = 0;
   var humidity = 0;
-
-  bool isLoaded = false;
-  String msg = '';
+   var msg = '';
   TempHumi dht = TempHumi(0, 0);
   final channel = IOWebSocketChannel.connect(esp_url);
   @override
   void initState() {
     super.initState();
-
     channel.stream.listen(
           (message) {
-        channel.sink.add('Flutter received $message');
-        if (message == "connected") {
-          print('Received from MCU: $message');
-          setState(() {
-            msg = message;
-          });
+        if (message == "Dont connected") {
+          print("Error");
         } else {
           print('Received from MCU: $message');
-          // {'tempC':'30.50','humi':'64.00'}
           Map<String, dynamic> json = jsonDecode(message);
           setState(() {
             dht = TempHumi.fromJson(json);
-            isLoaded = true;
           });
         }
         //channel.sink.close(status.goingAway);
@@ -51,7 +41,6 @@ class _TemparaturePageState extends State<TemparaturePage> {
         print("Web socket is closed");
         setState(() {
           msg = 'disconnected';
-          isLoaded = false;
         });
       },
       onError: (error) {
@@ -157,9 +146,9 @@ class _TemparaturePageState extends State<TemparaturePage> {
                     width: 50,
                     child: Image(
                       image: AssetImage(
-                          dht.humi <= 25
+                          dht.tempC <= 25
                               ?'assets/icon/temperature_2.png'
-                              : dht.humi >= 30
+                              : dht.tempC >= 30
                               ?'assets/icon/temperature_1.png'
                               : 'assets/icon/normally.png'
                       ),
